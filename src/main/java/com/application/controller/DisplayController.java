@@ -19,11 +19,12 @@ public class DisplayController {
 			sample.setName("Sid");
 			sample.setDept("ECE");
 			sample.setLocation("MDU");
+			return new ResponseEntity<>(sample,HttpStatus.OK);
 		} else {
 			sample.setId(id);
 			sample.setName("NA");
+			return new ResponseEntity<>(sample,HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<>(sample,HttpStatus.OK);
 	}
 
 }
