@@ -1,5 +1,7 @@
 package com.application.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DisplayController {
 	
 	@GetMapping("/details/{id}")
-	public User getDetails(@PathVariable Integer id) {
+	public ResponseEntity<User> getDetails(@PathVariable Integer id) {
 		User sample = new User();
 		if(id==1) {
 			sample.setId(id);
@@ -21,7 +23,7 @@ public class DisplayController {
 			sample.setId(id);
 			sample.setName("NA");
 		}
-		return sample;
+		return new ResponseEntity<>(sample,HttpStatus.OK);
 	}
 
 }
